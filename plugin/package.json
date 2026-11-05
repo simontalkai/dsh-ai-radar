@@ -1,0 +1,26 @@
+{
+  "name": "dsh-plugin-ai-radar",
+  "description": "AI 雷达：DSH 左栏加两页——AI 大佬知识库、AI 热点监控。数据读本机 python3 -m radar serve（127.0.0.1:8790）",
+  "version": "0.1.0",
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "engines": { "node": ">=24", "dsh": ">=0.2.1-rc.5" },
+  "dsh": {
+    "manifestVersion": 1,
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-ui-workspace"
+      ]
+    }
+  },
+  "peerDependencies": { "@deepseek-ai/cordis": "~4.0.5" }
+}

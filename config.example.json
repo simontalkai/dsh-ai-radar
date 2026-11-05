@@ -1,0 +1,41 @@
+{
+  "_说明": "复制一份成 config.json 再改（config.json 不进 git）。没写的项用默认值。改完不用重启服务器。",
+
+  "llm": {
+    "provider": "deepseek",
+    "base_url": "https://api.deepseek.com",
+    "model": "deepseek-v4-flash",
+    "api_key": "",
+    "api_key_env": "DEEPSEEK_API_KEY",
+    "_说明": "provider 三选一：deepseek（默认）/ openai（任何 OpenAI 兼容接口：Kimi、通义、智谱、OpenRouter、Ollama，改 base_url 和 model）/ claude（本机 claude -p，有订阅不用 key，model 填 sonnet 或 opus）。key 填 api_key，或者放环境变量 DEEPSEEK_API_KEY。",
+    "models": {},
+    "_models_说明": "按用途换模型，比如 {\"cards\": \"deepseek-v4-pro\"}：cards 做卡片、events 归热点事件、score 给观点打分、group 归议题。"
+  },
+
+  "me": "一个做 AI 内容的创作者，给普通人讲 AI 圈发生了什么",
+  "_me_说明": "一句话说你是谁、给谁做内容。模型打「值不值得做」的分、写「能拿来做什么」都照这个来。",
+  "forms": ["短视频讲解", "口播", "图文帖子", "不做"],
+  "_forms_说明": "热点事件的「适合做成什么」从这几个里挑，换成你自己的内容形式。",
+
+  "cards_dir": "data/cards",
+  "_cards_dir_说明": "卡片放哪。指到 Obsidian 库里的一个目录（比如 ~/Obsidian/AI大佬知识库），卡片、人物页、主题页就直接在 Obsidian 里能看能链。",
+
+  "schedule": {
+    "enabled": true,
+    "hot_every_min": 60,
+    "quiet_hours": [1, 8],
+    "cards_at": "07:40",
+    "pick_at": "09:30",
+    "_说明": "serve 开着就会按这个跑：热点每 hot_every_min 分钟一轮（quiet_hours 这段不抓）；卡片每天 cards_at 一次；打分归议题每天 pick_at 一次。"
+  },
+
+  "cards": {"days": 3, "limit": 25, "workers": 3, "max_chars": 200000},
+
+  "youtube_cookies": "",
+  "_youtube_cookies_说明": "YouTube 把你当机器人拦的时候填浏览器名（chrome / safari / firefox），yt-dlp 会读这个浏览器的登录。会读到你的登录信息，自己权衡。",
+  "whisper": {"bin": "whisper-cli", "model": ""},
+  "_whisper_说明": "视频没字幕或字幕被限流时，用本地 whisper.cpp 转写。model 填 ggml 模型文件路径，不填就跳过这类视频。",
+
+  "dsh_workspace": "",
+  "_dsh_workspace_说明": "DSH 里点「聊聊」开会话开在哪个工作区（填文件夹绝对路径，要先在 DSH 里打开过）。留空就开在当前工作区。"
+}

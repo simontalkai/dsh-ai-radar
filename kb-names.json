@@ -1,0 +1,38 @@
+{
+ "_说明": "认说话人用。alias：卡片里的写法 → 规范名；not_people：认出来但不是人（合集名、产品名、头衔）。名单里的人只写名或只写姓、而且只此一家的会自动认，不用写在这。改完不用重启。",
+ "alias": {
+  "@AnthropicAI": "Anthropic",
+  "AnthropicAI": "Anthropic",
+  "@claudeai": "Claude",
+  "claudeai": "Claude",
+  "@OpenAI": "OpenAI",
+  "@OpenAIDevs": "OpenAI Developers",
+  "OpenAIDevs": "OpenAI Developers",
+  "@GoogleDeepMind": "Google DeepMind",
+  "DeepMind": "Google DeepMind",
+  "@swyx": "swyx",
+  "Levels": "Pieter Levels",
+  "Levelsio": "Pieter Levels",
+  "levelsio": "Pieter Levels",
+  "@levelsio": "Pieter Levels",
+  "Dario": "Dario Amodei",
+  "Daniela": "Daniela Amodei",
+  "Karpathy": "Andrej Karpathy",
+  "Altman": "Sam Altman",
+  "Brockman": "Greg Brockman",
+  "Hassabis": "Demis Hassabis",
+  "Marcus": "Gary Marcus",
+  "Tunguz": "Tomasz Tunguz",
+  "Francois": "François",
+  "bcherny": "Boris Cherny"
+ },
+ "not_people": [
+  "X 大佬",
+  "SpaceX CFO",
+  "SpaceX",
+  "MetaHarness",
+  "Underclass",
+  "Geoclass",
+  "Preflight"
+ ]
+}

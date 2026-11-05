@@ -1,0 +1,818 @@
+{
+ "_说明": "名单和来源，改完不用重启。people/blogs/videos/x 给「AI 大佬知识库」做卡片用；hot 给「AI 热点监控」用。",
+ "people": {
+  "Andrej Karpathy": {
+   "role": "OpenAI 联合创始人、前特斯拉 AI 负责人，现在做 AI 教育 Eureka Labs",
+   "x": "karpathy"
+  },
+  "Sam Altman": {
+   "role": "OpenAI CEO",
+   "x": "sama",
+   "org": "OpenAI"
+  },
+  "Dario Amodei": {
+   "role": "Anthropic CEO",
+   "x": "DarioAmodei",
+   "org": "Anthropic"
+  },
+  "Greg Brockman": {
+   "role": "OpenAI 联合创始人、总裁",
+   "x": "gdb",
+   "org": "OpenAI"
+  },
+  "Demis Hassabis": {
+   "role": "Google DeepMind CEO",
+   "x": "demishassabis",
+   "org": "Google"
+  },
+  "Yann LeCun": {
+   "role": "图灵奖得主，前 Meta 首席 AI 科学家",
+   "x": "ylecun"
+  },
+  "Andrew Ng": {
+   "role": "DeepLearning.AI 创始人、斯坦福教授",
+   "x": "AndrewYNg"
+  },
+  "Jim Fan": {
+   "role": "英伟达研究科学家，做具身智能",
+   "x": "DrJimFan"
+  },
+  "Simon Willison": {
+   "role": "Django 联合作者、Datasette 作者，最勤快的 LLM 工具博主",
+   "x": "simonw"
+  },
+  "Ethan Mollick": {
+   "role": "沃顿商学院教授，写 One Useful Thing",
+   "x": "emollick"
+  },
+  "swyx": {
+   "role": "Latent Space 播客主理人、AI Engineer 大会发起人",
+   "x": "swyx"
+  },
+  "Dwarkesh Patel": {
+   "role": "Dwarkesh Podcast 主持人",
+   "x": "dwarkesh_sp"
+  },
+  "Nathan Lambert": {
+   "role": "Ai2 研究员，写 Interconnects",
+   "x": "natolambert"
+  },
+  "Lilian Weng": {
+   "role": "前 OpenAI 安全研究负责人，Thinking Machines 联合创始人",
+   "x": "lilianweng"
+  },
+  "Chip Huyen": {
+   "role": "《AI Engineering》作者",
+   "x": "chipro"
+  },
+  "Gary Marcus": {
+   "role": "认知科学家，AI 怀疑派代表",
+   "x": "GaryMarcus"
+  },
+  "Boris Cherny": {
+   "role": "Anthropic，Claude Code 负责人",
+   "x": "bcherny",
+   "org": "Anthropic"
+  },
+  "Logan Kilpatrick": {
+   "role": "Google AI Studio、Gemini API 产品负责人",
+   "x": "OfficialLoganK",
+   "org": "Google"
+  },
+  "Guillermo Rauch": {
+   "role": "Vercel CEO",
+   "x": "rauchg"
+  },
+  "Amjad Masad": {
+   "role": "Replit CEO",
+   "x": "amasad"
+  },
+  "Garry Tan": {
+   "role": "Y Combinator CEO",
+   "x": "garrytan"
+  },
+  "Pieter Levels": {
+   "role": "独立开发者，一人公司代表",
+   "x": "levelsio"
+  },
+  "Lex Fridman": {
+   "role": "Lex Fridman Podcast 主持人"
+  },
+  "Lenny Rachitsky": {
+   "role": "Lenny's Podcast 主持人，产品和增长"
+  },
+  "Brad Gerstner": {
+   "role": "Altimeter 创始人，BG2 播客主持人"
+  },
+  "Daniela Amodei": {
+   "role": "Anthropic 总裁、联合创始人",
+   "x": "DanielaAmodei",
+   "org": "Anthropic"
+  },
+  "Cat Wu": {
+   "role": "Anthropic，Claude Code 和 Cowork 产品负责人",
+   "x": "_catwu",
+   "org": "Anthropic"
+  },
+  "Thariq": {
+   "role": "Anthropic，Claude Code 团队",
+   "x": "trq212",
+   "org": "Anthropic"
+  },
+  "Alex Albert": {
+   "role": "Anthropic 研究，原 Claude 开发者关系负责人",
+   "x": "alexalbert__",
+   "org": "Anthropic"
+  },
+  "Jack Clark": {
+   "role": "Anthropic 联合创始人，写 Import AI 周报",
+   "x": "jackclarkSF",
+   "org": "Anthropic"
+  },
+  "Chris Olah": {
+   "role": "Anthropic 联合创始人，可解释性研究",
+   "x": "ch402",
+   "org": "Anthropic"
+  },
+  "Jan Leike": {
+   "role": "Anthropic 对齐研究，前 OpenAI 超级对齐负责人",
+   "x": "janleike",
+   "org": "Anthropic"
+  },
+  "Mike Krieger": {
+   "role": "Anthropic Labs，前 Anthropic CPO、Instagram 联合创始人",
+   "x": "mikeyk",
+   "org": "Anthropic"
+  },
+  "Amanda Askell": {
+   "role": "Anthropic 哲学家，负责 Claude 的性格和价值观",
+   "x": "AmandaAskell",
+   "org": "Anthropic"
+  },
+  "Sholto Douglas": {
+   "role": "Anthropic，做强化学习扩展",
+   "x": "_sholtodouglas",
+   "org": "Anthropic"
+  },
+  "Trenton Bricken": {
+   "role": "Anthropic 可解释性研究",
+   "x": "TrentonBricken",
+   "org": "Anthropic"
+  },
+  "Sam Bowman": {
+   "role": "Anthropic 对齐研究，纽约大学教授",
+   "x": "sleepinyourhat",
+   "org": "Anthropic"
+  },
+  "Tibo": {
+   "role": "Thibault Sottiaux，OpenAI Codex 和 ChatGPT 负责人",
+   "x": "thsottiaux",
+   "org": "OpenAI"
+  },
+  "Alexander Embiricos": {
+   "role": "OpenAI Codex 产品负责人",
+   "x": "embirico",
+   "org": "OpenAI"
+  },
+  "Noam Brown": {
+   "role": "OpenAI 推理模型研究员，o1 主要贡献者",
+   "x": "polynoamial",
+   "org": "OpenAI"
+  },
+  "Mark Chen": {
+   "role": "OpenAI 首席研究官",
+   "x": "markchen90",
+   "org": "OpenAI"
+  },
+  "Nick Turley": {
+   "role": "OpenAI ChatGPT 负责人",
+   "x": "nickaturley",
+   "org": "OpenAI"
+  },
+  "roon": {
+   "role": "OpenAI 员工，匿名大号",
+   "x": "tszzl",
+   "org": "OpenAI"
+  },
+  "Anthropic": {
+   "role": "Anthropic 官方号",
+   "x": "AnthropicAI",
+   "org": "Anthropic",
+   "official": true,
+   "min_chars": 40
+  },
+  "Claude": {
+   "role": "Claude 官方号",
+   "x": "claudeai",
+   "org": "Anthropic",
+   "official": true,
+   "min_chars": 40
+  },
+  "ClaudeDevs": {
+   "role": "Claude 开发者官方号",
+   "x": "ClaudeDevs",
+   "org": "Anthropic",
+   "official": true,
+   "min_chars": 40
+  },
+  "OpenAI": {
+   "role": "OpenAI 官方号",
+   "x": "OpenAI",
+   "org": "OpenAI",
+   "official": true,
+   "min_chars": 40
+  },
+  "OpenAI Developers": {
+   "role": "OpenAI 开发者官方号（Codex、API）",
+   "x": "OpenAIDevs",
+   "org": "OpenAI",
+   "official": true,
+   "min_chars": 40
+  },
+  "OpenAI Newsroom": {
+   "role": "OpenAI 新闻官方号",
+   "x": "OpenAINewsroom",
+   "org": "OpenAI",
+   "official": true,
+   "min_chars": 40
+  },
+  "Google DeepMind": {
+   "role": "Google DeepMind 官方号",
+   "x": "GoogleDeepMind",
+   "org": "Google",
+   "official": true,
+   "min_chars": 40
+  },
+  "Gemini": {
+   "role": "Gemini App 官方号",
+   "x": "GeminiApp",
+   "org": "Google",
+   "official": true,
+   "min_chars": 40
+  },
+  "Google AI Developers": {
+   "role": "Google AI 开发者官方号",
+   "x": "googleaidevs",
+   "org": "Google",
+   "official": true,
+   "min_chars": 40
+  },
+  "Ben Thompson": {
+   "role": "Stratechery 作者，科技商业分析"
+  },
+  "Benedict Evans": {
+   "role": "科技分析师，前 a16z 合伙人"
+  },
+  "Sebastian Raschka": {
+   "role": "LLM 研究者，《从零构建大模型》作者"
+  },
+  "Armin Ronacher": {
+   "role": "Flask 作者，写了很多 agent 编程实践"
+  },
+  "Geoffrey Huntley": {
+   "role": "agent 编程实践者，Ralph 循环的提出者"
+  },
+  "Hamel Husain": {
+   "role": "AI 评测（evals）顾问和讲师"
+  },
+  "Tomasz Tunguz": {
+   "role": "Theory Ventures 创始人，写 AI 投资和数据"
+  },
+  "Dan Shipper": {
+   "role": "Every 创始人，写 AI 怎么改变工作"
+  }
+ },
+ "_people_说明": "人物：role 写一句他是谁，x 是 X 账号（不带 @），org 决定 X 合集卡分到哪张（Anthropic / OpenAI / Google，不写进「其他」）。",
+ "orgs": [
+  "Anthropic",
+  "Claude",
+  "ClaudeDevs",
+  "OpenAI",
+  "OpenAI Developers",
+  "OpenAI Newsroom",
+  "Google DeepMind",
+  "Gemini",
+  "Google AI Developers",
+  "a16z",
+  "Y Combinator",
+  "Sequoia Capital",
+  "No Priors",
+  "Meta"
+ ],
+ "_orgs_说明": "这些是公司/官方号，不是人。认说话人时公司号排在人后面。",
+ "blogs": [
+  {
+   "person": "Andrej Karpathy",
+   "feed": "https://karpathy.bearblog.dev/feed/"
+  },
+  {
+   "person": "Sam Altman",
+   "feed": "https://blog.samaltman.com/posts.atom"
+  },
+  {
+   "person": "Simon Willison",
+   "feed": "https://simonwillison.net/atom/entries/",
+   "min_chars": 2500
+  },
+  {
+   "person": "Ethan Mollick",
+   "feed": "https://www.oneusefulthing.org/feed"
+  },
+  {
+   "person": "Dwarkesh Patel",
+   "feed": "https://www.dwarkesh.com/feed",
+   "ai_only": true,
+   "note": "播客正文带全文逐字稿，所以不再抓他的 YouTube"
+  },
+  {
+   "person": "swyx",
+   "feed": "https://www.latent.space/feed",
+   "note": "Latent Space 播客也在这里，不再抓 YouTube；[AINews] 每日速报太碎，跳过",
+   "skip_title": "^\\[AINews\\]"
+  },
+  {
+   "person": "Nathan Lambert",
+   "feed": "https://www.interconnects.ai/feed"
+  },
+  {
+   "person": "Lilian Weng",
+   "feed": "https://lilianweng.github.io/index.xml"
+  },
+  {
+   "person": "Chip Huyen",
+   "feed": "https://huyenchip.com/feed.xml"
+  },
+  {
+   "person": "Gary Marcus",
+   "feed": "https://garymarcus.substack.com/feed"
+  },
+  {
+   "person": "Jack Clark",
+   "feed": "https://importai.substack.com/feed"
+  },
+  {
+   "person": "Lenny Rachitsky",
+   "feed": "https://www.lennysnewsletter.com/feed",
+   "ai_only": true,
+   "note": "播客每期在 Newsletter 里带全文逐字稿，所以不抓他的 YouTube；「🎙️ How I AI: A + B」是两期单集帖的周合集，单集帖都会单独发，合集跳过（10-27 做重过两张）",
+   "skip_title": "^🎙️ How I AI:"
+  },
+  {
+   "person": "Anthropic",
+   "page": "https://www.anthropic.com/news",
+   "link": "/news/[a-z0-9-]+",
+   "exclude": "/news/(announcements|features|product|policy|research|events|societal-impacts|interpretability|alignment|economic-research)$"
+  },
+  {
+   "person": "Claude",
+   "page": "https://claude.com/blog",
+   "link": "https://claude\\.dev/blog/[a-z0-9-]+/?",
+   "exclude": "/blog/(category|tag|page)\\b"
+  },
+  {
+   "person": "Dan Shipper",
+   "feed": "https://every.to/chain-of-thought/feed"
+  },
+  {
+   "person": "Ben Thompson",
+   "feed": "https://stratechery.com/feed/",
+   "note": "付费文章 feed 里只有 6000 多字的预览，门槛 8000 把它们滤掉，只留免费全文",
+   "min_chars": 8000
+  },
+  {
+   "person": "Benedict Evans",
+   "feed": "https://www.ben-evans.com/benedictevans?format=rss"
+  },
+  {
+   "person": "Sebastian Raschka",
+   "feed": "https://magazine.sebastianraschka.com/feed"
+  },
+  {
+   "person": "Armin Ronacher",
+   "feed": "https://lucumr.pocoo.org/feed.atom",
+   "ai_only": true
+  },
+  {
+   "person": "Geoffrey Huntley",
+   "feed": "https://ghuntley.com/rss/",
+   "ai_only": true
+  },
+  {
+   "person": "Hamel Husain",
+   "feed": "https://hamel.dev/index.xml"
+  },
+  {
+   "person": "Tomasz Tunguz",
+   "feed": "https://tomtunguz.com/index.xml"
+  }
+ ],
+ "_blogs_说明": "feed 填 RSS/Atom；没有 RSS 的用 page + link（文章链接正则）+ exclude。可选 min_chars（正文少于这么多字跳过）、ai_only（只要 AI 相关的）、skip_title（标题正则跳过）。",
+ "videos": [
+  {
+   "person": "Andrej Karpathy",
+   "channel": "https://www.youtube.com/@AndrejKarpathy/videos"
+  },
+  {
+   "person": "Lex Fridman",
+   "channel": "https://www.youtube.com/@lexfridman/videos",
+   "ai_only": true,
+   "min_minutes": 30
+  },
+  {
+   "person": "Brad Gerstner",
+   "channel": "https://www.youtube.com/@Bg2Pod/videos",
+   "min_minutes": 20
+  },
+  {
+   "person": "No Priors",
+   "channel": "https://www.youtube.com/@NoPriorsPodcast/videos",
+   "min_minutes": 20
+  },
+  {
+   "person": "Y Combinator",
+   "channel": "https://www.youtube.com/@ycombinator/videos",
+   "ai_only": true,
+   "min_minutes": 20
+  },
+  {
+   "person": "a16z",
+   "channel": "https://www.youtube.com/@a16z/videos",
+   "ai_only": true,
+   "min_minutes": 25
+  },
+  {
+   "person": "Sequoia Capital",
+   "channel": "https://www.youtube.com/@sequoiacapital/videos",
+   "ai_only": true,
+   "min_minutes": 20
+  },
+  {
+   "person": "Anthropic",
+   "channel": "https://www.youtube.com/@anthropic-ai/videos",
+   "min_minutes": 10
+  },
+  {
+   "person": "OpenAI",
+   "channel": "https://www.youtube.com/@OpenAI/videos",
+   "min_minutes": 15
+  }
+ ],
+ "_videos_说明": "YouTube 频道，要装 yt-dlp。min_minutes 太短的跳过，ai_only 只要标题/简介跟 AI 有关的。",
+ "x": {
+  "people": [
+   "Andrej Karpathy",
+   "Sam Altman",
+   "Dario Amodei",
+   "Greg Brockman",
+   "Demis Hassabis",
+   "Yann LeCun",
+   "Andrew Ng",
+   "Jim Fan",
+   "Simon Willison",
+   "Ethan Mollick",
+   "swyx",
+   "Dwarkesh Patel",
+   "Nathan Lambert",
+   "Lilian Weng",
+   "Chip Huyen",
+   "Gary Marcus",
+   "Boris Cherny",
+   "Logan Kilpatrick",
+   "Guillermo Rauch",
+   "Amjad Masad",
+   "Garry Tan",
+   "Pieter Levels",
+   "Daniela Amodei",
+   "Cat Wu",
+   "Thariq",
+   "Alex Albert",
+   "Jack Clark",
+   "Chris Olah",
+   "Jan Leike",
+   "Mike Krieger",
+   "Amanda Askell",
+   "Sholto Douglas",
+   "Trenton Bricken",
+   "Sam Bowman",
+   "Tibo",
+   "Alexander Embiricos",
+   "Noam Brown",
+   "Mark Chen",
+   "Nick Turley",
+   "roon",
+   "Anthropic",
+   "Claude",
+   "ClaudeDevs",
+   "OpenAI",
+   "OpenAI Developers",
+   "OpenAI Newsroom",
+   "Google DeepMind",
+   "Gemini",
+   "Google AI Developers"
+  ],
+  "min_chars": 100,
+  "per_person": 4
+ },
+ "_x_说明": "X 上要做成合集卡的人（填 people 里的名字）。per_person 每人每次最多几条，min_chars 少于这么多字的推不要。",
+ "topics": [
+  "Agent",
+  "AI 编程",
+  "模型能力与评测",
+  "AGI 与时间线",
+  "训练与算力",
+  "AI 产品与创业",
+  "AI 与工作",
+  "安全与对齐",
+  "开源与本地模型",
+  "多模态与视频",
+  "机器人与具身",
+  "商业与资本",
+  "政策与地缘",
+  "学习与教育",
+  "AI 使用方法"
+ ],
+ "hot": {
+  "x": {
+   "中文": [
+    "dotey",
+    "op7418",
+    "vista8",
+    "xiaohu",
+    "lxfater",
+    "Khazix0918",
+    "imwsl90",
+    "dontbesilent",
+    "PandaTalk8",
+    "wangray"
+   ],
+   "官方": [
+    "OpenAI",
+    "AnthropicAI",
+    "claudeai",
+    "GoogleDeepMind",
+    "GeminiApp",
+    "OpenAIDevs",
+    "xai",
+    "deepseek_ai",
+    "Alibaba_Qwen",
+    "Kimi_Moonshot",
+    "MiniMax__AI",
+    "AIatMeta",
+    "sama",
+    "karpathy",
+    "cursor_ai",
+    "perplexity_ai"
+   ],
+   "一手": [
+    "trq212",
+    "bcherny",
+    "_catwu",
+    "lydiahallie",
+    "addyosmani",
+    "ClaudeDevs",
+    "thsottiaux",
+    "alexalbert__",
+    "simonw",
+    "OfficialLoganK",
+    "ahuja_karan",
+    "felixrieseberg"
+   ]
+  },
+  "_x_说明": "热点监控扫的 X 号，三类：中文（中文大V，算中文这边）、官方（公司官方号）、一手（核心开发者本人）。官方和一手算「源头」，用来算中文比源头晚了几小时。",
+  "news_queries": [
+   "大模型 发布",
+   "AI 新模型",
+   "开源模型",
+   "OpenAI",
+   "GPT-6",
+   "Anthropic Claude",
+   "谷歌 Gemini",
+   "DeepSeek",
+   "Kimi 月之暗面",
+   "通义千问",
+   "豆包 字节",
+   "智谱",
+   "MiniMax",
+   "腾讯 混元",
+   "英伟达 黄仁勋",
+   "马斯克 AI",
+   "奥特曼",
+   "AI 裁员",
+   "AI 芯片",
+   "人形机器人"
+  ],
+  "_news_queries_说明": "360 新闻按这些词各搜一次（按时间排）。新冒出来的公司加在这里。",
+  "entities": [
+   [
+    "OpenAI",
+    [
+     "OpenAI",
+     "ChatGPT",
+     "GPT",
+     "Sora",
+     "Codex",
+     "奥特曼",
+     "Altman",
+     "sama"
+    ]
+   ],
+   [
+    "Anthropic",
+    [
+     "Anthropic",
+     "Claude"
+    ]
+   ],
+   [
+    "谷歌",
+    [
+     "谷歌",
+     "Google",
+     "Gemini",
+     "DeepMind",
+     "Veo",
+     "Nano Banana"
+    ]
+   ],
+   [
+    "DeepSeek",
+    [
+     "DeepSeek",
+     "深度求索",
+     "梁文锋"
+    ]
+   ],
+   [
+    "Kimi",
+    [
+     "Kimi",
+     "月之暗面",
+     "Moonshot",
+     "杨植麟"
+    ]
+   ],
+   [
+    "阿里",
+    [
+     "千问",
+     "通义",
+     "Qwen",
+     "阿里",
+     "夸克"
+    ]
+   ],
+   [
+    "字节",
+    [
+     "豆包",
+     "字节",
+     "Seedance",
+     "即梦",
+     "Trae",
+     "火山引擎"
+    ]
+   ],
+   [
+    "腾讯",
+    [
+     "腾讯",
+     "混元",
+     "元宝"
+    ]
+   ],
+   [
+    "智谱",
+    [
+     "智谱",
+     "GLM",
+     "Zhipu"
+    ]
+   ],
+   [
+    "MiniMax",
+    [
+     "MiniMax",
+     "海螺"
+    ]
+   ],
+   [
+    "英伟达",
+    [
+     "英伟达",
+     "黄仁勋",
+     "NVIDIA",
+     "Nvidia",
+     "GPU"
+    ]
+   ],
+   [
+    "马斯克",
+    [
+     "马斯克",
+     "xAI",
+     "Grok",
+     "Musk",
+     "elonmusk"
+    ]
+   ],
+   [
+    "Meta",
+    [
+     "Meta",
+     "Llama",
+     "扎克伯格",
+     "Zuckerberg"
+    ]
+   ],
+   [
+    "苹果",
+    [
+     "苹果",
+     "Apple"
+    ]
+   ],
+   [
+    "微软",
+    [
+     "微软",
+     "Microsoft",
+     "Copilot"
+    ]
+   ],
+   [
+    "Cursor",
+    [
+     "Cursor"
+    ]
+   ],
+   [
+    "华为",
+    [
+     "华为",
+     "昇腾",
+     "鸿蒙"
+    ]
+   ],
+   [
+    "机器人",
+    [
+     "机器人",
+     "宇树",
+     "人形",
+     "Figure",
+     "Optimus",
+     "具身"
+    ]
+   ],
+   [
+    "自动驾驶",
+    [
+     "自动驾驶",
+     "萝卜快跑",
+     "FSD",
+     "Waymo",
+     "智驾"
+    ]
+   ],
+   [
+    "芯片算力",
+    [
+     "芯片",
+     "算力",
+     "光刻",
+     "台积电",
+     "TPU"
+    ]
+   ]
+  ],
+  "_entities_说明": "认公司：标题、推文里出现这些词就算提到这家。英文按词边界认。",
+  "author_entity": {
+   "OpenAI": "OpenAI",
+   "OpenAIDevs": "OpenAI",
+   "sama": "OpenAI",
+   "thsottiaux": "OpenAI",
+   "AnthropicAI": "Anthropic",
+   "claudeai": "Anthropic",
+   "ClaudeDevs": "Anthropic",
+   "trq212": "Anthropic",
+   "bcherny": "Anthropic",
+   "_catwu": "Anthropic",
+   "lydiahallie": "Anthropic",
+   "alexalbert__": "Anthropic",
+   "ahuja_karan": "Anthropic",
+   "felixrieseberg": "Anthropic",
+   "GoogleDeepMind": "谷歌",
+   "GeminiApp": "谷歌",
+   "OfficialLoganK": "谷歌",
+   "addyosmani": "谷歌",
+   "xai": "马斯克",
+   "deepseek_ai": "DeepSeek",
+   "Alibaba_Qwen": "阿里",
+   "Kimi_Moonshot": "Kimi",
+   "MiniMax__AI": "MiniMax",
+   "AIatMeta": "Meta",
+   "cursor_ai": "Cursor"
+  },
+  "_author_entity_说明": "官方号和一手开发者的推，正文里常不写公司名，按账号补上。"
+ }
+}

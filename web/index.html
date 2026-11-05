@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 雷达</title>
+<style>
+/* 浏览器版：没有 DSH 时自己补上 DSH 的主题变量，插件那份 client.js 原样能用 */
+:root{
+  --dsw-font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --dsw-alias-bg-base:#ffffff;--dsw-alias-bg-layer-1:#ffffff;
+  --dsw-alias-border-l1:rgba(0,0,0,.09);--dsw-alias-border-l2:rgba(0,0,0,.13);--dsw-alias-border-l3:rgba(0,0,0,.18);
+  --dsw-alias-fill-l2:rgba(0,0,0,.05);
+  --dsw-alias-label-primary:#1f1f1f;--dsw-alias-label-secondary:#555a61;--dsw-alias-label-tertiary:#8a8f96;--dsw-alias-label-primary-foreground:#ffffff;
+  --dsw-alias-button-primary-fill:#1f1f1f;--dsw-alias-button-primary-hover:#3a3a3a;
+  --dsw-alias-interactive-bg-hover:rgba(0,0,0,.04);--dsw-alias-interactive-bg-hover-solid:#f4f4f5;--dsw-alias-interactive-bg-active:#ececee;
+  --dsw-alias-link:#1971c2;--dsw-alias-state-business-primary:#4c6ef5;--dsw-alias-state-danger-primary:#e03131;--dsw-alias-state-success-primary:#2f9e44;
+  --dsw-focus-ring-color:#4c6ef5;--dsw-focus-ring-width:2px;
+  --dsw-radius-xs:4px;--dsw-radius-sm:7px;--dsw-radius-lg:14px;
+  --tab-bg:#f7f7f8;
+}
+body[data-ds-dark-theme]{
+  --dsw-alias-bg-base:#141416;--dsw-alias-bg-layer-1:#1c1c1f;
+  --dsw-alias-border-l1:rgba(255,255,255,.09);--dsw-alias-border-l2:rgba(255,255,255,.13);--dsw-alias-border-l3:rgba(255,255,255,.2);
+  --dsw-alias-fill-l2:rgba(255,255,255,.07);
+  --dsw-alias-label-primary:#ececee;--dsw-alias-label-secondary:#b0b4ba;--dsw-alias-label-tertiary:#80858c;--dsw-alias-label-primary-foreground:#141416;
+  --dsw-alias-button-primary-fill:#ececee;--dsw-alias-button-primary-hover:#d4d4d8;
+  --dsw-alias-interactive-bg-hover:rgba(255,255,255,.05);--dsw-alias-interactive-bg-hover-solid:#26262a;--dsw-alias-interactive-bg-active:#2e2e33;
+  --dsw-alias-link:#74c0fc;--dsw-alias-state-business-primary:#91a7ff;--dsw-alias-state-danger-primary:#ff8787;--dsw-alias-state-success-primary:#69db7c;
+  --dsw-focus-ring-color:#91a7ff;--tab-bg:#1a1a1d;
+}
+html,body{height:100%;margin:0}
+body{background:var(--dsw-alias-bg-base);color:var(--dsw-alias-label-primary);font-family:var(--dsw-font-family)}
+#app{display:flex;flex-direction:column;height:100%}
+.tabs{display:flex;align-items:center;gap:4px;padding:8px 16px;border-bottom:.5px solid var(--dsw-alias-border-l1);background:var(--tab-bg)}
+.tabs b{margin-right:12px;font-size:14px;letter-spacing:.02em}
+.tabs button{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 12px;border:0;border-radius:8px;background:none;color:var(--dsw-alias-label-secondary);font:inherit;font-size:13px;cursor:pointer}
+.tabs button[aria-pressed=true]{background:var(--dsw-alias-bg-base);color:var(--dsw-alias-label-primary);font-weight:600;box-shadow:0 0 0 .5px var(--dsw-alias-border-l2)}
+.tabs .tip{margin-left:auto;color:var(--dsw-alias-label-tertiary);font-size:12px}
+.view{flex:1;min-height:0}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);max-width:min(560px,90vw);padding:10px 16px;border-radius:10px;background:var(--dsw-alias-button-primary-fill);color:var(--dsw-alias-label-primary-foreground);font-size:13px;box-shadow:0 8px 24px rgba(0,0,0,.18);z-index:99}
+@media (max-width:560px){.tabs .tip{display:none}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script>
+// 跟着系统深浅色走（DSH 里由 DSH 自己设 data-ds-dark-theme）
+(function () {
+  var mq = window.matchMedia("(prefers-color-scheme: dark)");
+  var set = function () { if (mq.matches) document.body.setAttribute("data-ds-dark-theme", ""); else document.body.removeAttribute("data-ds-dark-theme"); };
+  set(); mq.addEventListener("change", set);
+})();
+window.__AIRADAR_API__ = location.origin;
+// 插件文件是 DSH 模块格式：这里给一个最小的 __ModuleLoader__，把它导出的页面拿出来
+window.__ModuleLoader__ = { load: function (m) { window.__airadar = m.factory(function (name) { if (name === "react") return React; throw new Error("没有 " + name); }); } };
+</script>
+<script src="client.js"></script>
+<script>
+(function () {
+  var h = React.createElement, P = window.__airadar.pages;
+  function copy(text) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+    var t = document.createElement("textarea"); t.value = text; document.body.appendChild(t); t.select();
+    try { document.execCommand("copy"); } catch (e) {} document.body.removeChild(t); return Promise.resolve();
+  }
+  function App() {
+    var init = (location.hash || "").indexOf("kb") >= 0 ? "kb" : "hot";
+    var s = React.useState(init), tab = s[0], setTab = s[1];
+    var t = React.useState(""), toast = t[0], setToast = t[1];
+    var start = function (prompt) {
+      copy(prompt).then(function () {
+        setToast("已复制给 AI 的任务，贴进 DeepSeek / Claude / ChatGPT 任何一个对话里就行");
+        setTimeout(function () { setToast(""); }, 3200);
+      });
+    };
+    var go = function (k) { setTab(k); history.replaceState(null, "", "#" + k); };
+    return h(React.Fragment, null,
+      h("nav", { className: "tabs" },
+        h("b", null, "AI 雷达"),
+        h("button", { type: "button", "aria-pressed": tab === "hot", onClick: function () { go("hot"); } }, h(P.HotIcon), "AI 热点监控"),
+        h("button", { type: "button", "aria-pressed": tab === "kb", onClick: function () { go("kb"); } }, h(P.KbIcon), "AI 大佬知识库"),
+        h("span", { className: "tip" }, "浏览器版：按钮会把任务复制到剪贴板。装进 DSH 会直接开会话")),
+      h("div", { className: "view" }, tab === "hot" ? h(P.HotPage, { start: start }) : h(P.KbPage, { start: start })),
+      toast ? h("div", { className: "toast", role: "status" }, toast) : null);
+  }
+  ReactDOM.createRoot(document.getElementById("app")).render(h(App));
+})();
+</script>
+</body>
+</html>

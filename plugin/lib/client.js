@@ -3,7 +3,7 @@
 // 数据读本机服务 http://127.0.0.1:8790（python3 -m radar serve）。按钮只开会话、把任务填进输入框，发不发你自己点。
 // 样式全部走 DSH 主题变量（--dsw-*），明暗两套自动跟着换。浏览器版（web/index.html）用的也是这一份文件。
 window.__ModuleLoader__.load({
-	id: "dsh-ai-radar",
+	id: "dsh-plugin-ai-radar",   // 必须跟 package.json 的 name 一致，不然 DSH 会报 duplicate factory registration
 	factory: (require) => {
 		var module = { exports: {} };
 		var exports = module.exports;

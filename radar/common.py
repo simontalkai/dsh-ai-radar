@@ -37,7 +37,7 @@ _cfg = {}
 
 
 def config():
-    p = os.path.join(ROOT, 'config.json')
+    p = os.environ.get('RADAR_CONFIG') or os.path.join(ROOT, 'config.json')   # 想用另一份配置（比如测试）就设 RADAR_CONFIG
     mt = os.path.getmtime(p) if os.path.exists(p) else 0
     if _cfg.get('mt') != mt:
         user = _strip_notes(json.load(open(p, encoding='utf-8'))) if mt else {}
@@ -93,7 +93,8 @@ def get_json(url, referer=None, timeout=20):
 
 
 def load(p, default):
-    try: return json.load(open(p, encoding='utf-8'))
+    try:
+        with open(p, encoding='utf-8') as f: return json.load(f)
     except Exception: return default
 
 

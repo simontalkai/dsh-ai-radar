@@ -9,6 +9,10 @@
 
 没装 DSH 也能用，浏览器打开 `http://127.0.0.1:8790` 是同样的两页，按钮改成把任务复制到剪贴板，贴进任何 AI 对话都行。
 
+![装进 DSH 后的 AI 热点监控](docs/dsh.png)
+
+浏览器版：
+
 ![AI 热点监控](docs/hot.png)
 ![AI 大佬知识库](docs/kb.png)
 
@@ -17,7 +21,7 @@
 要求：Python 3.9 以上（macOS 自带的就行），**不用装任何 pip 包**。
 
 ```bash
-git clone <这个仓库> dsh-ai-radar && cd dsh-ai-radar
+git clone https://github.com/simontalkai/dsh-ai-radar.git && cd dsh-ai-radar
 cp config.example.json config.json
 ```
 
@@ -53,7 +57,8 @@ python3 -m radar serve         # 起服务器，浏览器打开 http://127.0.0.1
 
 - 点「深挖」「聊聊」开的会话默认开在当前工作区。想固定开在某个文件夹，就在 `config.json` 的 `dsh_workspace` 里填那个文件夹的绝对路径（要先在 DSH 里打开过它）。
 - 服务器换了端口的话，在 DSH 的开发者工具控制台里执行 `localStorage.setItem("airadar:api", "http://127.0.0.1:端口")`。
-- 在 DSH 0.2.1-rc.5 上写的。插件只用了 DSH 公开的 `slots`、`uiWorkspace`、`workspaces` 三个接口和 `--dsw-*` 主题变量，深浅色会自动跟着 DSH 换。
+- 在 DSH 0.2.1-rc.5 上实测过：两个页面都能打开，按钮能开新会话、把任务填进输入框，「现在抓一次」能从 DSH 里触发后台抓取。插件只用了 DSH 公开的 `slots`、`uiWorkspace`、`workspaces` 三个接口和 `--dsw-*` 主题变量，深浅色会自动跟着 DSH 换。
+- 自己改插件时注意：`lib/client.js` 里 `__ModuleLoader__.load` 的 `id` 必须跟 `package.json` 的 `name` 一模一样，不一样 DSH 会报 `duplicate factory registration`，插件加载不起来。
 
 ## 换模型
 
@@ -102,6 +107,8 @@ python3 -m radar pick [score|group]
 python3 -m radar doctor
 ```
 
+想同时跑两套配置（比如两个账号各一套名单），设环境变量 `RADAR_CONFIG=/path/to/another.json` 就会读那份配置。
+
 数据都在 `data/` 里：`hot/latest.json` 是热点快照，`items/` 是抓到的原文，`kb/` 存打分和议题，日志是 `*.log`。
 
 ## 已知的坑
@@ -116,6 +123,14 @@ python3 -m radar doctor
 
 热点每小时抓一轮，但只有原料变化够大时才会叫模型重新归事件，每隔 2 小时也会强制重归一次；其余轮次沿用上一次的归类，只按新原料重算热度。打分是一批 50 条一起打，打过的不会重打。卡片每天最多做 `cards.limit` 张。默认的 `deepseek-v4-flash` 跑这些很便宜，具体花多少看你的名单有多长。
 
+## 测试
+
+```bash
+python3 -m unittest discover -s tests -v
+```
+
+这套测试不联网、不调模型，几秒钟跑完，覆盖：原话核对、字幕转文本、卡片解析和认说话人、热度和传播时间线、要不要重新归类、服务器接口和 CORS，还有插件 id 和包名是否一致。要测真实的抓取和模型，跑 `python3 -m radar doctor`。
+
 ## 目录
 
 ```
@@ -127,6 +142,7 @@ radar/          后端（纯 Python 标准库）
   serve.py      本机服务器 + 定时
 plugin/         DSH 插件（lib/client.js 一个文件，不用打包）
 web/index.html  浏览器版，用的是同一份 client.js
+tests/          不联网的单元测试
 sources.json    名单和来源
 config.example.json
 ```

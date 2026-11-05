@@ -49,7 +49,8 @@ class H(BaseHTTPRequestHandler):
                                         'cards_dir': c['cards_dir'], 'schedule': c['schedule']})
             if p in STATIC:
                 f = os.path.join(ROOT, STATIC[p])
-                return self._send(200, open(f, 'rb').read(), (mimetypes.guess_type(f)[0] or 'text/plain') + '; charset=utf-8')
+                with open(f, 'rb') as fh: body = fh.read()
+                return self._send(200, body, (mimetypes.guess_type(f)[0] or 'text/plain') + '; charset=utf-8')
             self._send(404, {'ok': False, 'error': 'not found'})
         except Exception as e:
             self._send(500, {'ok': False, 'error': str(e)[:300]})

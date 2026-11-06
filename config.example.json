@@ -2,12 +2,14 @@
   "_说明": "复制一份成 config.json 再改（config.json 不进 git）。没写的项用默认值。改完不用重启服务器。",
 
   "llm": {
-    "provider": "deepseek",
+    "provider": "dsh",
+    "dsh": {"cmd": "", "model": "deepseek-flash", "effort": "high", "node_dir": ""},
+    "_dsh_说明": "默认：借 DSH 里已经登录的 DeepSeek 账号跑，什么 key 都不用填。cmd 留空就用 PATH 里的 dsh 命令（npm i -g @deepseek-ai/dsh）；找不到就填完整命令，比如 \"/path/to/node /path/to/@deepseek-ai/dsh/lib/bin.js\"。node_dir 填 Node 24 所在目录（默认 node 版本太低时用）。model 是 DSH 里的模型名，要更强填 deepseek-v4-pro；effort 填 high / medium。",
     "base_url": "https://api.deepseek.com",
     "model": "deepseek-v4-flash",
     "api_key": "",
     "api_key_env": "DEEPSEEK_API_KEY",
-    "_说明": "provider 三选一：deepseek（默认）/ openai（任何 OpenAI 兼容接口：Kimi、通义、智谱、OpenRouter、Ollama，改 base_url 和 model）/ claude（本机 claude -p，有订阅不用 key，model 填 sonnet 或 opus）。key 填 api_key，或者放环境变量 DEEPSEEK_API_KEY。",
+    "_说明": "provider 四选一：dsh（默认，用 DSH 登录的 DeepSeek 账号）/ deepseek（DeepSeek 开放平台 API key）/ openai（任何 OpenAI 兼容接口：Kimi、通义、智谱、OpenRouter、Ollama，改 base_url 和 model）/ claude（本机 claude -p，model 填 sonnet 或 opus）。用 API key 的填 api_key，或者放环境变量 DEEPSEEK_API_KEY。",
     "models": {},
     "_models_说明": "按用途换模型，比如 {\"cards\": \"deepseek-v4-pro\"}：cards 做卡片、events 归热点事件、score 给观点打分、group 归议题。"
   },

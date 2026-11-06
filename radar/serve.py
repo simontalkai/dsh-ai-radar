@@ -45,7 +45,8 @@ class H(BaseHTTPRequestHandler):
             if p == '/api/hot': return self._send(200, hot.view())
             if p == '/api/meta':
                 c = config()
-                return self._send(200, {'ok': True, 'workspace': c.get('dsh_workspace') or '', 'provider': c['llm']['provider'], 'model': c['llm']['model'],
+                model = c['llm']['dsh']['model'] if c['llm']['provider'] == 'dsh' else c['llm']['model']
+                return self._send(200, {'ok': True, 'workspace': c.get('dsh_workspace') or '', 'provider': c['llm']['provider'], 'model': model,
                                         'cards_dir': c['cards_dir'], 'schedule': c['schedule']})
             if p in STATIC:
                 f = os.path.join(ROOT, STATIC[p])
@@ -101,6 +102,6 @@ def main(argv):
         threading.Thread(target=scheduler, daemon=True).start()
     srv = ThreadingHTTPServer(('127.0.0.1', port), H)
     print(f'AI 雷达在 http://127.0.0.1:{port} （浏览器直接打开就能看；DSH 插件读这个地址）', flush=True)
-    print(f'模型：{c["llm"]["provider"]} / {c["llm"]["model"]}；定时：' + ('开' if c['schedule'].get('enabled') and '--no-schedule' not in argv else '关'), flush=True)
+    print(f'模型：{c["llm"]["provider"]} / {c["llm"]["dsh"]["model"] if c["llm"]["provider"] == "dsh" else c["llm"]["model"]}；定时：' + ('开' if c['schedule'].get('enabled') and '--no-schedule' not in argv else '关'), flush=True)
     try: srv.serve_forever()
     except KeyboardInterrupt: pass

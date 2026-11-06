@@ -18,14 +18,16 @@
 
 ## 快速开始（5 分钟）
 
-要求：Python 3.9 以上（macOS 自带的就行），**不用装任何 pip 包**。
+要求：
+- Python 3.9 以上，macOS 自带的就行，**不用装任何 pip 包**。
+- 已经装好 DSH，并在 DSH 网页上登录了 DeepSeek 账号。**不用另外申请 API key**：后台会借这个登录，用 `dsh headless` 调 DeepSeek，而且会关掉它的全部工具，只让它回答问题、不碰你的文件。
 
 ```bash
 git clone https://github.com/simontalkai/dsh-ai-radar.git && cd dsh-ai-radar
 cp config.example.json config.json
 ```
 
-打开 `config.json`，把 DeepSeek 的 API key 填进 `llm.api_key`（或者设环境变量 `DEEPSEEK_API_KEY`），再把 `me` 改成一句话介绍你自己。key 在 [platform.deepseek.com](https://platform.deepseek.com) 申请。
+打开 `config.json`，把 `me` 改成一句话介绍你自己，其它可以先不动。如果终端里找不到 `dsh` 命令，在 `llm.dsh.cmd` 里写它的完整路径。DSH 要求 Node 24：要是 `node -v` 低于 24，就在 `llm.dsh.node_dir` 里填 Node 24 所在的目录。
 
 ```bash
 python3 -m radar doctor        # 检查模型通不通、各个来源抓不抓得到
@@ -62,11 +64,12 @@ python3 -m radar serve         # 起服务器，浏览器打开 http://127.0.0.1
 
 ## 换模型
 
-`config.json` 的 `llm.provider` 三选一：
+`config.json` 的 `llm.provider` 四选一：
 
 | provider | 用什么 | 要填 |
 |---|---|---|
-| `deepseek`（默认） | DeepSeek 开放平台 | `api_key`。`model` 默认 `deepseek-v4-flash`，要更强填 `deepseek-v4-pro` |
+| `dsh`（默认） | DSH 里登录的 DeepSeek 账号 | 不用填。`llm.dsh.model` 默认 `deepseek-flash`，要更强填 `deepseek-v4-pro` |
+| `deepseek` | DeepSeek 开放平台 API key | `api_key`。`model` 默认 `deepseek-v4-flash`，要更强填 `deepseek-v4-pro` |
 | `openai` | 任何 OpenAI 兼容接口：Kimi、通义、智谱、OpenRouter、本地 Ollama | `base_url`、`model`、`api_key` |
 | `claude` | 本机的 Claude Code（`claude -p`），有订阅就不用 key | `model` 填 `sonnet` 或 `opus` |
 
@@ -113,6 +116,7 @@ python3 -m radar doctor
 
 ## 已知的坑
 
+- **用 `dsh` 后端时**：DSH 网页上的 DeepSeek 账号登录过期了，或者账号余额用完了，后台就会报「没有回答」，这时打开 DSH 网页重新登录或者充值。`dsh headless` 每次调用要先启动一次 DSH，比直接调 API 慢：实测一轮热点（抓取加归事件）大约 3 分半，做一张卡片 25 秒到 1 分钟。嫌慢的话换成 `deepseek` 后端用 API key，会快不少。
 - **YouTube**：字幕接口很容易被限流（429），一次运行里碰到一次，后面的视频就不再抓字幕了。匿名抓多了还会被当成机器人拦下来，这时在 `config.json` 里把 `youtube_cookies` 设成 `"chrome"`，yt-dlp 会借用你浏览器的登录（会读到你的登录信息，自己权衡）。视频没字幕的话，可以配 `whisper.model` 用本地的 whisper.cpp 转写，不配就跳过这类视频。
 - **X** 走的是公开的 fxtwitter 接口，不用登录。它偶尔会挂，挂了那一轮 X 就是空的，下一轮会自己恢复。
 - **360 新闻**连着抓几轮之后，条数可能掉一半，这是被限流了。
@@ -121,7 +125,7 @@ python3 -m radar doctor
 
 ## 省钱
 
-热点每小时抓一轮，但只有原料变化够大时才会叫模型重新归事件，每隔 2 小时也会强制重归一次；其余轮次沿用上一次的归类，只按新原料重算热度。打分是一批 50 条一起打，打过的不会重打。卡片每天最多做 `cards.limit` 张。默认的 `deepseek-v4-flash` 跑这些很便宜，具体花多少看你的名单有多长。
+热点每小时抓一轮，但只有原料变化够大时才会叫模型重新归事件，每隔 2 小时也会强制重归一次；其余轮次沿用上一次的归类，只按新原料重算热度。打分是一批 50 条一起打，打过的不会重打。卡片每天最多做 `cards.limit` 张。默认用的 DeepSeek Flash 跑这些很便宜，扣的是你 DeepSeek 账号的余额，具体花多少看你的名单有多长。
 
 ## 测试
 

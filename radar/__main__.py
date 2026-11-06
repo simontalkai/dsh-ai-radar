@@ -12,7 +12,7 @@ def doctor():
     from .common import config, sources
     from . import llm, hot
     c = config()
-    print(f'模型：{c["llm"]["provider"]} / {c["llm"]["model"]}')
+    print(f'模型：{c["llm"]["provider"]} / {c["llm"]["dsh"]["model"] if c["llm"]["provider"] == "dsh" else c["llm"]["model"]}')
     try: print('  回答：', llm.ask('只回两个字：通了', purpose='doctor', timeout=120, tries=1).strip()[:40])
     except Exception as e: print('  ✗ 不通：', str(e)[:300])
     S = sources()

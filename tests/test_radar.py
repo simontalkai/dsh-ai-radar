@@ -31,6 +31,22 @@ class Common(unittest.TestCase):
         self.assertEqual(common.last_json('好的：[{"a": 3}] 就这些'), [{'a': 3}])
         with self.assertRaises(ValueError): common.last_json('没有 JSON')
 
+    def test_dsh_provider(self):
+        c = {'dsh': {'cmd': f'{sys.executable} {os.path.join(HERE, "fake_dsh.py")}', 'effort': 'medium'}}
+        got = json.loads(llm._dsh('原文在这', '你是编辑', 'deepseek-flash', c, 30))
+        self.assertEqual(got['args'][0], 'headless'); self.assertIn('--json', got['args'])
+        self.assertIn('provider: deepseek-account', got['patch'])   # 用 DSH 网页上登录的账号，不要 API key
+        self.assertIn('model: deepseek-flash', got['patch']); self.assertIn('reasoningEffort: medium', got['patch'])
+        for tool in ('tool-bash', 'tool-fs', 'tool-web', 'agent-instructions', 'skill-filesystem'):
+            self.assertIn(f'- id: {tool}\n  disabled: true', got['patch'])   # 工具全关，只回答不动手
+        self.assertTrue(got['q'].startswith('你是编辑') and got['q'].endswith('原文在这'))
+        with self.assertRaises(llm.LLMError) as e: llm._dsh('要报错', None, 'm', c, 30)
+        self.assertIn('not logged in', str(e.exception))
+        from unittest import mock
+        with mock.patch('shutil.which', return_value=None), self.assertRaises(llm.LLMError) as e:
+            llm._dsh('x', None, 'm', {'dsh': {'cmd': ''}}, 30)
+        self.assertIn('找不到 dsh', str(e.exception))
+
     def test_no_key_message(self):
         with self.assertRaises(llm.LLMError) as e: llm.ask('hi', tries=1)
         self.assertIn('没有 API key', str(e.exception))
